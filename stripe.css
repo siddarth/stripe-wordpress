@@ -1,0 +1,73 @@
+#stripe-payment-wrap {
+	margin: 0 auto;
+	padding: 20px;
+	width: 400px;
+}
+
+#stripe-payment-form br { display: none; }
+#stripe-payment-form p:empty { display: none; }
+
+div.stripe-payment-form-warning{
+	background-color: #ffffdd;
+	border: 1px solid #ffffaa;
+	margin: 10px 0;
+	padding: 10px;
+}
+div.stripe-payment-config-errors{
+	border: 1px solid #ffaaaa;
+	background-color: #ffdddd;
+	padding: 10px;
+	font-size: 18px;
+}
+div.stripe-payment-config-errors ul{
+}
+div.stripe-payment-config-errors ul li {
+	margin: 5px 10px 5px 20px;
+}
+
+.stripe-payment-form-row {
+	overflow: auto;
+	margin-bottom: 4px;
+}
+
+.stripe-payment-form-row label {
+	display: block;
+	float: left;
+	width: 180px;
+	font-size: 14px;
+	padding-top: 8px;
+}
+
+.stripe-payment-form-row p { display: inline; }
+
+.stripe-payment-form-row input[type="text"],
+.stripe-payment-form-row input[type="number"],
+.stripe-payment-form-row input[type="email"] {
+	background-color: #fff;
+	padding: 5px;
+	margin-bottom: 1px;
+	border: 2px solid #aaa;
+	width: 150px;
+}
+
+.stripe-payment-form-row span.error {
+	color: #ff0000;
+}
+
+.stripe-payment-form-row-submit {
+	margin-top: 30px;
+}
+.stripe-payment-form-row-submit button {
+	margin-left: 180px;
+}
+.stripe-payment-form-row-progress span.message {
+	display: block;
+	text-align: center;
+	padding: 3px;
+	background-color: #f8f8f8;
+	font-size: 14px;
+}
+.stripe-payment-form-row-progress span.message:empty { 
+	background-color: transparent;
+}
+
