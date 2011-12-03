@@ -23,8 +23,8 @@ function addHeaderCode() {
         
         // add our scripts and their dependencies
     	wp_enqueue_script('jquery');
-        wp_enqueue_script('stripe_payment_plugin', STRIPE_PAYMENTS_PLUGIN_URL . '/stripe.js', array('jquery'), '1.5.19');
-		wp_enqueue_script('stripe', 'https://js.stripe.com/v1/', array('jquery'), '1.5.19');
+        wp_enqueue_script('stripe_payment_plugin', STRIPE_PAYMENTS_PLUGIN_URL . '/stripe.js', array('jquery'), '3.2.2');
+	wp_enqueue_script('stripe', 'https://js.stripe.com/v1/', array('jquery'), '1.5.19');
 		
 		// emit the javascript variable that holds our public strip key
 		$isLive = strlen($isLiveKeys)==0?'false':'true';

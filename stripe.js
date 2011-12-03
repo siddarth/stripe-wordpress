@@ -1,3 +1,5 @@
+var $ = jQuery;
+
 $(document).ready(function(){
 	// If the keys are not the 'live' ones
 	if(!isLiveKeys) {
@@ -7,7 +9,6 @@ $(document).ready(function(){
 		dom += 'a CVC of <strong>any 3 or 4 digit number</strong> for testing.</p>';
 		dom += '</div>';
 		$('#stripe-payment-wrap').prepend(dom);
-		
 		$('#cardNumber').val('424242424242');
 		$('#cardCvc').val('123');
 		$('#cardName').val('John Doe');
@@ -31,9 +32,6 @@ $(document).ready(function(){
 		validate(input);
 	});
 	
-	// Initial validation of the amount
-	$('#cardAmount').blur();
-	
 	// Bind to the submit for the form
     $("#stripe-payment-form").submit(function(event) {
     
@@ -44,8 +42,7 @@ $(document).ready(function(){
     	}
     
 		// Lock the form so no change or double submission occurs
-		lock_form();    
-    
+		lock_form();
     	// Trigger validation
     	if(!validateForm()) {
     		// The form is not valid…exit early
@@ -62,7 +59,7 @@ $(document).ready(function(){
     	params['exp_year']	= $('#cardExpiryYear').val();
     	
         // Get the charge amount and convert to cents
-        var amount = $('#cardAmount').val()*100;
+        var amount = 100;
  
         // Validate card information using Stripe.com.
         //	Note: createToken returns immediately. The card
@@ -88,6 +85,7 @@ $(document).ready(function(){
 		    charge['amount']	= amount;
 		    charge['paymentId'] = $('#paymentId').val();
 		    charge['email']		= $('#email').val();
+		    charge['desc']	= $('#desc').val();
 		    charge['action']	= 'stripe_plugin_process_card';
 		    progress('Submitting charge…');
 		    $.post('/wp-admin/admin-ajax.php', charge, function(response){

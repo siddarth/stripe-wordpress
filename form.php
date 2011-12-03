@@ -5,17 +5,14 @@
 //	that contain sensitive data. This prevents this data from
 //	being posted to your site. All sensitive card holder info
 //	is only sent to Stripe.com using HTTPS.
-function create_payment_form($amount = 100, $paymentId = null, $paymentUrl=STRIPE_PAYMENTS_PAYMENT_URL) {
-		
+function create_payment_form($description = null, $paymentId = null, $paymentUrl=STRIPE_PAYMENTS_PAYMENT_URL) {
+	$disabled = $description ? 'disabled="disabled"' : '';;
 	return <<<EOT
 <div id="stripe-payment-wrap">
 	<form action="$paymentUrl" method="post" id="stripe-payment-form">
-		<input id="paymentId" type="hidden" name="paymentId" value="$paymentId" />
-		<div class="stripe-payment-form-row">
-	        <label>Amount (USD $)</label>
-			<input type="text" id="cardAmount" size="20" name="cardAmount" disabled="disabled" class="amount required" value="$amount" />
-			<span class="error"></span>
-	    </div>
+	    <input id="paymentId" type="hidden" name="paymentId" value="$paymentId" />
+ 	    <input id="desc" type="hidden" name="desc" value="$description" />
+
 	    <div class="stripe-payment-form-row">
 			<label>Name on Card</label>
 			<input type="text" id="cardName" size="20" name="cardName" class="required" />

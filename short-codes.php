@@ -4,13 +4,13 @@
 add_shortcode('stripe_payment', 'stripe_payment');	
 function stripe_payment($atts, $content = null ) {
    	extract(shortcode_atts(array(
-      "amount" 		=> 500.0,
+      "description" 	=> null,
       "payment_id"	=> null
    	), $atts));
       	
    	$errors = verify_configuration_settings();
 	
-	return $errors.create_payment_form($amount, $payment_id);
+	return $errors.create_payment_form($description, $payment_id);
 }
 
 // Verify configuration settings
