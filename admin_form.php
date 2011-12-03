@@ -3,29 +3,29 @@
 		// Form data sent
 		$livePublicKey = $_POST['live_public_key'];
 		update_option('stripe_payment_live_public_key', $livePublicKey);
-		
+
 		$liveSecretKey = $_POST['live_secret_key'];
 		update_option('stripe_payment_live_secret_key', $liveSecretKey);
 
 		$testPublicKey = $_POST['test_public_key'];
 		update_option('stripe_payment_test_public_key', $testPublicKey);
-		
+
 		$testSecretKey = $_POST['test_secret_key'];
 		update_option('stripe_payment_test_secret_key', $testSecretKey);
-		
+
 		$isLiveKeys = $_POST['is_live_keys'];
 		update_option('stripe_payment_is_live_keys', $isLiveKeys);
-		
+
 		$currencySymbol = $_POST['currency_symbol'];
 		update_option('stripe_payment_currency_symbol', $currencySymbol);
-		
+
 		$transPrefix = $_POST['trans_prefix'];
 		update_option('stripe_payment_trans_prefix', $transPrefix);
-		
+
 		?>
-		
+
 		<div class="updated"><p><strong><?php _e('Options saved.'); ?></strong></p></div>
-		
+
 		<?php
 	} else {
 		// Normal page display
@@ -33,25 +33,35 @@
 		$liveSecretKey 			= get_option('stripe_payment_live_secret_key');
 		$testPublicKey 			= get_option('stripe_payment_test_public_key');
 		$testSecretKey 			= get_option('stripe_payment_test_secret_key');
-		$isLiveKeys 		= get_option('stripe_payment_is_live_keys');
-		$currencySymbol 	= get_option('stripe_payment_currency_symbol');
-		$transPrefix 		= get_option('stripe_payment_trans_prefix');
+		$isLiveKeys 		    = get_option('stripe_payment_is_live_keys');
+		$currencySymbol 	  = get_option('stripe_payment_currency_symbol');
+		$transPrefix 		    = get_option('stripe_payment_trans_prefix');
 	}
-	
+
 ?>
 
 
 <div id="stripe-payments-admin-wrap" class="wrap">
 	<h2>Stripe Payments - Options</h2>
-	
+
 	<h4>Instructions</h4>
 	<div class="instructions">
+	  <p>To add elements to the inventory, navigate to Plugins -> Installed Plugins.
+	  Click Edit on the Stripe Payments plugin. Pick "ajax-payment.php" on the right side.
+    Edit the inventory variable to add/remove items:</p>
+
+    <code>
+        $inventory = Array(
+          "item1" => 100, // note that the amount is in cents.
+          "item2" => 200
+        );
+    </code>
 		<p>To add a payment form to a page or post use the following short code:</p>
 		<code>
-			[stripe_payment amount=100.0]
+			[stripe_payment description="item"]
 		</code>
 		<ul>
-			<li><strong>amount</strong> - The amount that will be shown in the form.</li>
+			<li><strong>description</strong> - The identifier as defined above.</li>
 		</ul>
 	</div>
 	<form name="stripe_payment_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
